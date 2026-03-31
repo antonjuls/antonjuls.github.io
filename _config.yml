@@ -1,0 +1,23 @@
+title: Anton Skrynnik
+description: Personal portfolio
+url: "https://antonjuls.github.io"
+baseurl: ""
+
+markdown: kramdown
+permalink: pretty
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
