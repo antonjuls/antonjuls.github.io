@@ -66,4 +66,4 @@ If this policy is updated, the effective date at the top will be revised. Contin
 
 ## Contact
 
-For privacy inquiries, contact: **antonjuls@gmail.com**
+For privacy inquiries, contact: **[antonjuls@gmail.com](mailto:antonjuls@gmail.com)**
