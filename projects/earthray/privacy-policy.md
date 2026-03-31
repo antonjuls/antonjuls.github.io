@@ -22,7 +22,12 @@ EarthRay is developed by Anton Skrynnik (antonjuls), an independent developer ba
 
 ## Authentication
 
-EarthRay uses Firebase Anonymous Authentication. No email, password, phone number, or real identity is collected.
+EarthRay uses Firebase Anonymous Authentication. A random anonymous user ID is generated for the session — no email, password, phone number, or real identity is collected. The anonymous ID is not persisted after the session ends.
+
+## Legal Basis for Processing (GDPR)
+
+- **Consent** (Art. 6(1)(a)) — Location access requires explicit device permission before any data is processed.
+- **Legitimate interest** (Art. 6(1)(f)) — Processing device orientation and session data is necessary for core app functionality (real-time AR ray visualization).
 
 ## What We Do NOT Collect
 
@@ -30,12 +35,12 @@ No analytics. No crash reporting. No advertising or tracking SDKs. No IDFA. No c
 
 ## Third-Party Services
 
-- **Firebase Realtime Database & Authentication** (Google) — used for multiplayer session sync and anonymous authentication
-- **Expo Updates (EAS)** — used for over-the-air app updates
+- **Firebase Realtime Database & Authentication** (Google) — used for multiplayer session sync and anonymous authentication. Firebase servers may be located outside the EU (including the US). Google operates under the EU–US Data Privacy Framework and Standard Contractual Clauses.
+- **Expo Updates (EAS)** — used for over-the-air app updates. No personal data is transmitted to Expo.
 
 ## Data Sharing
 
-Location and ray data are shared only with users in the same session (requires a room code). No data is sold to third parties. No advertising. No profiling.
+Fuzzed location and ray data are shared only with users in the same session (requires a room code) and with Google as a data processor (Firebase). No data is sold to third parties. No advertising. No profiling.
 
 ## Data Retention
 
@@ -45,9 +50,19 @@ All session data is deleted automatically on disconnect via Firebase `onDisconne
 
 EarthRay is not directed at children under 13. No data is knowingly collected from children.
 
-## GDPR
+## Your Rights (GDPR)
 
-The developer is based in the EU (Netherlands). Users may request data deletion by contacting the developer, though session data is already auto-deleted on disconnect.
+The developer is based in the EU (Netherlands). Under GDPR, you have the right to:
+
+- Access, correct, or delete your personal data
+- Restrict or object to processing
+- Lodge a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens) at [autoriteitpersoonsgegevens.nl](https://autoriteitpersoonsgegevens.nl)
+
+In practice, all session data is already auto-deleted on disconnect. For any requests, contact the developer.
+
+## Changes to This Policy
+
+If this policy is updated, the effective date at the top will be revised. Continued use of the app after changes constitutes acceptance.
 
 ## Contact
 
