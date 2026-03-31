@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+  <defs>
+    <radialGradient id="earth" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1a4a7a"/>
+      <stop offset="70%" stop-color="#0f3460"/>
+      <stop offset="100%" stop-color="#0a1628"/>
+    </radialGradient>
+    <radialGradient id="core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff6b35"/>
+      <stop offset="100%" stop-color="#ff6b3500"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="400" fill="#0a0e1a"/>
+
+  <!-- Earth -->
+  <circle cx="300" cy="200" r="120" fill="url(#earth)" stroke="#1e3a5f" stroke-width="1.5"/>
+
+  <!-- Earth surface highlight -->
+  <ellipse cx="270" cy="170" rx="80" ry="60" fill="#1a4a7a" opacity="0.3"/>
+
+  <!-- Core glow (offset from ray path) -->
+  <circle cx="300" cy="200" r="8" fill="url(#core)"/>
+  <circle cx="300" cy="200" r="3" fill="#ff8c57"/>
+
+  <!-- User A (top-left, Amsterdam-ish position on globe) -->
+  <rect x="172" y="58" width="24" height="40" rx="4" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/>
+  <rect x="175" y="62" width="18" height="28" rx="2" fill="#1e293b"/>
+
+  <!-- User A label -->
+  <text x="145" y="50" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="13" font-weight="600">User A</text>
+  <text x="140" y="118" fill="#8892a8" font-family="system-ui, sans-serif" font-size="11">Amsterdam</text>
+
+  <!-- User B (bottom-right, NYC-ish position) -->
+  <rect x="410" y="290" width="24" height="40" rx="4" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/>
+  <rect x="413" y="294" width="18" height="28" rx="2" fill="#1e293b"/>
+
+  <!-- User B label -->
+  <text x="444" y="306" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="13" font-weight="600">User B</text>
+  <text x="444" y="322" fill="#8892a8" font-family="system-ui, sans-serif" font-size="11">New York</text>
+
+  <!-- Ray line — intentionally NOT through Earth center (300,200) -->
+  <!-- Entry point ~top of Earth, exit point ~bottom-right, path offset from center -->
+  <circle cx="215" cy="105" r="4" fill="#60a5fa" opacity="0.8"/>
+  <circle cx="385" cy="275" r="4" fill="#60a5fa" opacity="0.8"/>
+
+  <!-- Ray: phone to entry -->
+  <line x1="184" y1="98" x2="215" y2="105" stroke="#60a5fa" stroke-width="2.5"/>
+
+  <!-- Ray: inside Earth (dashed, offset from center) -->
+  <line x1="215" y1="105" x2="385" y2="275" stroke="#60a5fa" stroke-width="2" stroke-dasharray="6,3" opacity="0.45"/>
+
+  <!-- Ray: exit to User B -->
+  <line x1="385" y1="275" x2="422" y2="290" stroke="#60a5fa" stroke-width="2.5"/>
+
+  <!-- Annotations -->
+  <text x="228" y="100" fill="#60a5fa" font-family="system-ui, sans-serif" font-size="10">ray enters</text>
+  <text x="332" y="290" fill="#60a5fa" font-family="system-ui, sans-serif" font-size="10">ray exits</text>
+
+  <!-- Center label -->
+  <text x="308" y="218" fill="#ff8c57" font-family="system-ui, sans-serif" font-size="9" opacity="0.7">center</text>
+
+  <!-- Direction arrow on ray (midpoint of the inside-earth segment, offset from center) -->
+  <polygon points="305,195 296,190 299,198" fill="#60a5fa" opacity="0.7"/>
+
+  <!-- Note -->
+  <text x="300" y="375" fill="#8892a8" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle">Ray direction determined by phone orientation — does not pass through Earth's center</text>
+</svg>

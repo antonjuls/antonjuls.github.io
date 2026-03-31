@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" fill="none">
+  <defs>
+    <marker id="af" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#60a5fa"/>
+    </marker>
+    <marker id="ag" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#34d399"/>
+    </marker>
+    <marker id="ao" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#ff8c57"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="640" height="320" fill="#0a0e1a"/>
+
+  <!-- Input boxes -->
+  <rect x="20" y="30" width="120" height="44" rx="8" fill="rgba(96,165,250,0.1)" stroke="#60a5fa" stroke-width="1"/>
+  <text x="80" y="48" fill="#60a5fa" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle" font-weight="600">GPS</text>
+  <text x="80" y="64" fill="#8892a8" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle">LLA → ECEF</text>
+
+  <rect x="20" y="90" width="120" height="44" rx="8" fill="rgba(96,165,250,0.1)" stroke="#60a5fa" stroke-width="1"/>
+  <text x="80" y="108" fill="#60a5fa" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle" font-weight="600">DeviceMotion</text>
+  <text x="80" y="124" fill="#8892a8" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle">Euler → Matrix</text>
+
+  <rect x="20" y="150" width="120" height="44" rx="8" fill="rgba(96,165,250,0.1)" stroke="#60a5fa" stroke-width="1"/>
+  <text x="80" y="168" fill="#60a5fa" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle" font-weight="600">Math</text>
+  <text x="80" y="184" fill="#8892a8" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle">ENU → ECEF</text>
+
+  <!-- Arrows to center -->
+  <line x1="140" y1="52" x2="220" y2="108" stroke="#60a5fa" stroke-width="1.5" marker-end="url(#af)"/>
+  <line x1="140" y1="112" x2="220" y2="112" stroke="#60a5fa" stroke-width="1.5" marker-end="url(#af)"/>
+  <line x1="140" y1="172" x2="220" y2="118" stroke="#60a5fa" stroke-width="1.5" marker-end="url(#af)"/>
+
+  <!-- Center processing box -->
+  <rect x="228" y="88" width="130" height="50" rx="8" fill="rgba(255,140,87,0.1)" stroke="#ff8c57" stroke-width="1"/>
+  <text x="293" y="110" fill="#ff8c57" font-family="system-ui, sans-serif" font-size="12" text-anchor="middle" font-weight="600">ray_ECEF</text>
+  <text x="293" y="128" fill="#8892a8" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle">position + direction</text>
+
+  <!-- Arrow to Firebase -->
+  <line x1="358" y1="113" x2="418" y2="113" stroke="#ff8c57" stroke-width="1.5" marker-end="url(#ao)"/>
+
+  <!-- Firebase box -->
+  <rect x="426" y="88" width="100" height="50" rx="8" fill="rgba(251,191,36,0.12)" stroke="#fbbf24" stroke-width="1"/>
+  <text x="476" y="110" fill="#fbbf24" font-family="system-ui, sans-serif" font-size="12" text-anchor="middle" font-weight="600">Firebase</text>
+  <text x="476" y="126" fill="#8892a8" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle">Realtime DB</text>
+
+  <!-- Output boxes -->
+  <rect x="440" y="180" width="170" height="36" rx="8" fill="rgba(52,211,153,0.1)" stroke="#34d399" stroke-width="1"/>
+  <text x="525" y="203" fill="#34d399" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle">AR Scene → 3D markers</text>
+
+  <rect x="440" y="226" width="170" height="36" rx="8" fill="rgba(52,211,153,0.1)" stroke="#34d399" stroke-width="1"/>
+  <text x="525" y="249" fill="#34d399" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle">Globe → markers + rays</text>
+
+  <rect x="440" y="272" width="170" height="36" rx="8" fill="rgba(52,211,153,0.1)" stroke="#34d399" stroke-width="1"/>
+  <text x="525" y="295" fill="#34d399" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle">HUD → azimuth + elevation</text>
+
+  <!-- Arrows from Firebase to outputs -->
+  <line x1="476" y1="138" x2="476" y2="148" stroke="#34d399" stroke-width="1.5"/>
+  <text x="476" y="166" fill="#8892a8" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle">other users' data</text>
+  <line x1="525" y1="172" x2="525" y2="180" stroke="#34d399" stroke-width="1.5" marker-end="url(#ag)"/>
+  <line x1="525" y1="216" x2="525" y2="226" stroke="#34d399" stroke-width="1.5" marker-end="url(#ag)"/>
+  <line x1="525" y1="262" x2="525" y2="272" stroke="#34d399" stroke-width="1.5" marker-end="url(#ag)"/>
+</svg>

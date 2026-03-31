@@ -32,4 +32,4 @@ When a user in Amsterdam points their phone downward toward New York, the ray pa
 
 ---
 
-[Privacy Policy](privacy-policy/)
+[Full Specification](specification/) · [Privacy Policy](privacy-policy/)
