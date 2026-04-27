@@ -3,7 +3,7 @@ layout: default
 title: EarthRay — Project Specification
 ---
 
-# EarthRay — Project Specification v1.0
+# EarthRay — Project Specification v1.1
 
 **Author:** Anton Skrynnik (antonjuls) — Independent developer, Netherlands
 
@@ -234,7 +234,7 @@ v_ECEF_y =  v_E·cos(λ) − v_N·sin(φ)sin(λ) + v_U·cos(φ)sin(λ)
 v_ECEF_z =               v_N·cos(φ)        + v_U·sin(φ)
 ```
 
-**ray_ECEF** is broadcast to all other users via Firebase. **cameraRight_ECEF** and **cameraUp_ECEF** are used locally for AR scene camera orientation.
+**ray_ECEF** is broadcast to all other users in the session via the relay server (WebSocket). **cameraRight_ECEF** and **cameraUp_ECEF** are used locally for AR scene camera orientation.
 
 ---
 
@@ -288,7 +288,7 @@ Rendered as a polyline `[P_start, P_exit, P_beyond]` with color gradient. Segmen
 
 ### Block 8 — Rendering Another User's Ray (AR View)
 
-User B receives `{ecef, ray, normal, color}` from User A via Firebase.
+User B receives `{ecef, ray, normal, color}` from User A via the relay server.
 
 **Camera orientation (updated each frame):**
 
@@ -369,34 +369,65 @@ Rendered as a billboard quad with a radial gradient shader — bright red-orange
 
 ---
 
-### Block 11 — Firebase Data Structure
+### Block 11 — Relay Protocol
 
-Each user publishes at ~5 Hz (200ms interval):
+Real-time sync runs over WebSocket against a self-hosted relay server (Node.js, in-memory rooms, no database). All messages are JSON; a binary protocol is a post-launch optimization.
+
+**Join** (once per session):
+
+```typescript
+interface JoinMessage {
+  type: "join";
+  sessionId: string; // 6-char room code
+  displayName: string;
+  color: string; // hex for this user's ray
+}
+```
+
+On successful join, the server issues a short-lived anonymous JWT and returns the current peer list. Name and color are sent **once at join** and do not repeat in every update.
+
+**Publish** (~5 Hz, 200 ms interval):
+
+```typescript
+interface PublishMessage {
+  type: "publish";
+  state: {
+    // GPS position (fuzzed ~30 km before transmission)
+    lat: number;
+    lon: number;
+    alt: number;
+
+    // ECEF position
+    ecef: { x: number; y: number; z: number };
+
+    // Ray direction in ECEF (unit vector from rear camera)
+    ray: { x: number; y: number; z: number };
+
+    // Surface normal in ECEF
+    normal: { x: number; y: number; z: number };
+  };
+}
+```
+
+**Broadcast to peers** (`userUpdate` frame from server):
 
 ```typescript
 interface UserState {
-  userId: string; // unique session ID
-  name: string; // display name
-  timestamp: number; // Unix ms
-  color: string; // hex color for this user's ray
+  userId: string; // assigned by relay at join
+  name: string; // carried from join
+  color: string; // carried from join
+  timestamp: number; // server time, ms since epoch
 
-  // GPS position (fuzzed ~30km before transmission)
   lat: number;
   lon: number;
   alt: number;
-
-  // ECEF position
   ecef: { x: number; y: number; z: number };
-
-  // Ray direction in ECEF (unit vector from rear camera)
   ray: { x: number; y: number; z: number };
-
-  // Surface normal in ECEF
   normal: { x: number; y: number; z: number };
 }
 ```
 
-Bandwidth: ~120 bytes/user × 5 Hz × 100 users = 60 KB/s.
+Bandwidth per publish frame: ~120 bytes. At 5 Hz, a 5-person room produces roughly 0.6 KB/s upstream per user and ~2.4 KB/s downstream per user (peers).
 
 ---
 
@@ -468,19 +499,19 @@ phase = acos(dot(sunDir, moonDir))    (0 = new moon, π = full moon)
 
 ```
 React Native + Expo (managed workflow)
-├── expo-location          GPS → LLA
-├── expo-sensors           DeviceMotion → Euler angles
-├── expo-camera            live camera feed (AR background)
-├── react-three-fiber      3D rendering (globe + AR scene)
-├── drei                   Three.js helpers
-├── Firebase Realtime DB   real-time sync + anonymous auth
-├── Firebase Remote Config maintenance mode
-├── Zustand                state management
-├── i18next                internationalization
-├── react-native-reanimated gesture animation
+├── expo-location              GPS → LLA
+├── expo-sensors               DeviceMotion → Euler angles
+├── expo-camera                live camera feed (AR background)
+├── react-three-fiber          3D rendering (globe + AR scene)
+├── drei                       Three.js helpers
+├── WebSocket relay server     real-time sync, anonymous JWT auth, remote config
+│   (self-hosted Node.js + `ws`, in-memory only, deployed on Fly.io)
+├── Zustand                    state management
+├── i18next                    internationalization
+├── react-native-reanimated    gesture animation
 ├── react-native-gesture-handler pan/pinch gestures
-├── burnt                  toast notifications
-└── TypeScript             all code
+├── burnt                      toast notifications
+└── TypeScript                 all code
 ```
 
 ### Why Sensor-Based AR (Not ARKit/ARCore)
@@ -489,7 +520,7 @@ This project uses **sensor-based AR** (IMU + GPS + math), not **vision-based AR*
 
 ### Data Flow
 
-<img src="/assets/images/data-flow.svg" alt="EarthRay data flow — sensors to Firebase to rendering" style="width:100%; max-width:640px; margin: 1.5rem 0;">
+<img src="/assets/images/data-flow.svg" alt="EarthRay data flow — sensors through the relay server to peer rendering" style="width:100%; max-width:640px; margin: 1.5rem 0;">
 
 ---
 
@@ -538,4 +569,4 @@ Constants:
 
 ---
 
-*EarthRay — Specification v1.0. All rights reserved. Anton Skrynnik (antonjuls), 2026.*
+_EarthRay — Specification v1.1. All rights reserved. Anton Skrynnik (antonjuls), 2026._

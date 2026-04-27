@@ -5,7 +5,7 @@ title: EarthRay — Privacy Policy
 
 # EarthRay — Privacy Policy
 
-**Effective date:** March 31, 2026
+**Effective date:** April 23, 2026
 
 ## Who We Are
 
@@ -13,16 +13,16 @@ EarthRay is developed by Anton Skrynnik (antonjuls), an independent developer ba
 
 ## Data We Collect and Why
 
-| Data                                | Purpose                                                     | Storage                                                      |
-| ----------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Precise location (GPS)              | Core app functionality — ray calculation, globe positioning | **Used locally only.** Location is fuzzed by ~30 km before being sent to Firebase or other users. Precise coordinates are never transmitted or stored. |
-| Device orientation (motion sensors) | Determines phone pointing direction for AR ray              | Real-time local processing only, never stored or transmitted |
-| Camera feed                         | AR overlay display                                          | Local display only — never recorded, transmitted, or stored  |
-| Display name (user-chosen)          | Shown to other session participants                         | Firebase, active session only — auto-deleted on disconnect   |
+| Data                                | Purpose                                                     | Storage                                                                                                                                                        |
+| ----------------------------------- | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Precise location (GPS)              | Core app functionality — ray calculation, globe positioning | **Used locally only.** Location is fuzzed by ~30 km before being sent to the relay server or other users. Precise coordinates are never transmitted or stored. |
+| Device orientation (motion sensors) | Determines phone pointing direction for AR ray              | Real-time local processing only, never stored or transmitted                                                                                                   |
+| Camera feed                         | AR overlay display                                          | Local display only — never recorded, transmitted, or stored                                                                                                    |
+| Display name (user-chosen)          | Shown to other session participants                         | Relay server, in-memory only, active session — auto-deleted on disconnect                                                                                      |
 
 ## Authentication
 
-EarthRay uses Firebase Anonymous Authentication. A random anonymous user ID is generated for the session — no email, password, phone number, or real identity is collected. The anonymous ID is not persisted after the session ends.
+EarthRay uses anonymous session-only authentication. On joining a room, the relay server issues a random anonymous user ID and a short-lived session token (self-issued JWT, 1-hour expiry). No email, password, phone number, or real identity is collected. The anonymous ID and token are held only in device memory during the session and are not persisted after the session ends.
 
 ## Legal Basis for Processing (GDPR)
 
@@ -35,16 +35,16 @@ No analytics. No crash reporting. No advertising or tracking SDKs. No IDFA. No c
 
 ## Third-Party Services
 
-- **Firebase Realtime Database & Authentication** (Google) — used for multiplayer session sync and anonymous authentication. Firebase servers may be located outside the EU (including the US). Google operates under the EU–US Data Privacy Framework and Standard Contractual Clauses.
+- **Fly.io** — used to host the EarthRay relay server, which synchronizes session state between participants in real time. The relay holds session data only in memory; it has no database, does not log user state, and does not retain anything after disconnect. The relay server is currently hosted in Fly.io's Ashburn (US East) region. Fly.io operates under the EU–US Data Privacy Framework and Standard Contractual Clauses.
 - **Expo Updates (EAS)** — used for over-the-air app updates. No personal data is transmitted to Expo.
 
 ## Data Sharing
 
-Fuzzed location and ray data are shared only with users in the same session (requires a room code) and with Google as a data processor (Firebase). No data is sold to third parties. No advertising. No profiling.
+Fuzzed location and ray data are shared only with users in the same session (requires a room code) and with Fly.io as the hosting provider of the relay server. No data is sold to third parties. No advertising. No profiling.
 
 ## Data Retention
 
-All session data is deleted automatically on disconnect via Firebase `onDisconnect` handlers. There are no persistent user accounts. Local device storage (AsyncStorage) holds only session preferences such as room code and display name.
+The relay server holds session data only in memory for the duration of an active session. On disconnect, the server removes the user from the room after a brief grace period (~10 seconds, to tolerate momentary network blips) and broadcasts the departure to remaining participants. When the last user leaves a room, the room itself is deleted from memory after ~30 seconds of idleness. No data is written to disk, no database is used, and server restarts clear all state. There are no persistent user accounts. Local device storage (AsyncStorage) holds only session preferences such as room code and display name.
 
 ## Children
 
