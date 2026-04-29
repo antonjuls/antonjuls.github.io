@@ -1,22 +1,18 @@
 ---
-layout: default
+layout: null
 title: Projects
+sitemap: false
 ---
-
-# Projects
-
-<div class="project-grid">
-{% for project in site.projects %}
-  <div class="project-card">
-    <h3><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
-    <p>{{ project.description }}</p>
-    {% if project.tags %}
-    <div class="tags">
-      {% for tag in project.tags %}
-      <span class="tag">{{ tag }}</span>
-      {% endfor %}
-    </div>
-    {% endif %}
-  </div>
-{% endfor %}
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting…</title>
+  <link rel="canonical" href="{{ '/' | absolute_url }}">
+  <meta http-equiv="refresh" content="0; url={{ '/' | absolute_url }}">
+  <meta name="robots" content="noindex">
+</head>
+<body>
+  <p>Redirecting to <a href="{{ '/' | absolute_url }}">home</a>.</p>
+</body>
+</html>

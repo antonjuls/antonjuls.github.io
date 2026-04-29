@@ -4,6 +4,8 @@ description: Real-time multiplayer AR app that lets users visualize rays through
 tags: [React Native, Expo, TypeScript, Three.js, WebSocket, AR]
 ---
 
+_Personal project — solo developer: design, mobile app, and relay backend._
+
 EarthRay is a real-time multiplayer AR mobile app. Users point their phone in any direction; a ray projects from the rear camera through the Earth. Other connected users see that ray entering their AR space from the geometrically correct direction.
 
 ## How It Works

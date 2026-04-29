@@ -2,6 +2,7 @@ title: Anton Skrynnik
 description: Software Engineer — React Native, Web, Mobile
 url: "https://antonjuls.github.io"
 baseurl: ""
+og_image: /assets/images/avatar.png
 
 markdown: kramdown
 permalink: pretty

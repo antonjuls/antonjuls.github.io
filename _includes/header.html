@@ -1,7 +1,19 @@
+{% unless page.url == '/' %}
+  {% assign back_url = '/' %}
+  {% assign back_label = 'Home' %}
+  {% assign url_parts = page.url | split: '/' %}
+  {% if url_parts.size > 3 and url_parts[1] == 'projects' %}
+    {% assign project_url = '/projects/' | append: url_parts[2] | append: '/' %}
+    {% for project in site.projects %}
+      {% if project.url == project_url %}
+        {% assign back_url = project.url %}
+        {% assign back_label = project.title %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
 <header class="site-header">
   <nav>
-    <a href="{{ '/' | relative_url }}" class="site-title">{{ site.title }}</a>
-    <a href="{{ '/' | relative_url }}">Home</a>
-    <a href="{{ '/projects/' | relative_url }}">Projects</a>
+    <a href="{{ back_url | relative_url }}" class="back-link">&larr; {{ back_label }}</a>
   </nav>
 </header>
+{% endunless %}

@@ -3,13 +3,13 @@ layout: default
 title: Home
 ---
 
-# Hi, I'm Anton Skrynnik
+# Hi, I'm Anton Skrynnik 🥷
 
 Mobile Tech Lead and React Native / Web Developer based in the Netherlands. 15+ years in web development, 5+ in React Native.
 
-Currently exploring AI and agentic workflows — applying them to both personal and work projects.
+Currently leading mobile delivery for client teams, shipping personal mobile side projects, and exploring AI and agentic workflows — applying them across both.
 
-[GitHub](https://github.com/antonjuls) · [LinkedIn](https://www.linkedin.com/in/askrynnik)
+[GitHub](https://github.com/antonjuls) · [LinkedIn](https://www.linkedin.com/in/askrynnik) · [Email](mailto:antonjuls@gmail.com)
 
 ## Projects
 
