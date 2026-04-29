@@ -505,7 +505,7 @@ React Native + Expo (managed workflow)
 ├── react-three-fiber          3D rendering (globe + AR scene)
 ├── drei                       Three.js helpers
 ├── WebSocket relay server     real-time sync, anonymous JWT auth, remote config
-│   (self-hosted Node.js + `ws`, in-memory only, deployed on Fly.io)
+│   (self-hosted Node.js + `ws`, in-memory only)
 ├── Zustand                    state management
 ├── i18next                    internationalization
 ├── react-native-reanimated    gesture animation
