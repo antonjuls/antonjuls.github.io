@@ -23,7 +23,7 @@ EarthRay is a real-time multiplayer mobile application in which users at differe
 
 The ray always originates from the rear camera lens, perpendicular to the phone's screen, in the exact direction the camera is pointing — like a laser pointer. When a user in Amsterdam points their phone downward, their ray passes through the Earth and exits on the other side. A user in New York sees that ray entering their AR space from below, at the geometrically correct angle.
 
-<img src="/assets/images/earthray-concept.svg" alt="EarthRay concept — ray from User A passes through Earth to User B" style="width:100%; max-width:600px; margin: 1.5rem 0;">
+<img src="{{ '/assets/images/earthray/earthray-concept.svg' | relative_url }}" alt="EarthRay concept — ray from User A passes through Earth to User B" style="width:100%; max-width:600px; margin: 1.5rem 0;">
 
 ---
 
@@ -61,7 +61,7 @@ Circumference = (arc_distance / angle_between_normals) × 360°
 
 **Surface Normal** — Vector perpendicular to the surface at a given point. On the WGS84 ellipsoid: n = [cos(φ)cos(λ), cos(φ)sin(λ), sin(φ)].
 
-<img src="/assets/images/surface-normals.svg" alt="Surface normals at different locations on Earth's surface" style="width:100%; max-width:500px; margin: 1.5rem 0;">
+<img src="{{ '/assets/images/earthray/surface-normals.svg' | relative_url }}" alt="Surface normals at different locations on Earth's surface" style="width:100%; max-width:500px; margin: 1.5rem 0;">
 
 **Ray** — A directed half-line originating from the rear camera of a phone, perpendicular to the screen plane, extending in the direction the camera is pointing.
 
@@ -520,7 +520,7 @@ This project uses **sensor-based AR** (IMU + GPS + math), not **vision-based AR*
 
 ### Data Flow
 
-<img src="/assets/images/data-flow.svg" alt="EarthRay data flow — sensors through the relay server to peer rendering" style="width:100%; max-width:640px; margin: 1.5rem 0;">
+<img src="{{ '/assets/images/earthray/data-flow.svg' | relative_url }}" alt="EarthRay data flow — sensors through the relay server to peer rendering" style="width:100%; max-width:640px; margin: 1.5rem 0;">
 
 ---
 
