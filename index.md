@@ -15,8 +15,8 @@ Currently exploring AI and agentic workflows — applying them to both personal 
 
 <div class="project-grid">
 {% for project in site.projects %}
-  <div class="project-card">
-    <h3><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
+  <a class="project-card" href="{{ project.url | relative_url }}">
+    <h3>{{ project.title }}</h3>
     <p>{{ project.description }}</p>
     {% if project.tags %}
     <div class="tags">
@@ -25,6 +25,6 @@ Currently exploring AI and agentic workflows — applying them to both personal 
       {% endfor %}
     </div>
     {% endif %}
-  </div>
+  </a>
 {% endfor %}
 </div>
