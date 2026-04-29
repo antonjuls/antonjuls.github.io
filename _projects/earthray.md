@@ -7,6 +7,13 @@ tags: [React Native, Expo, TypeScript, Three.js, WebSocket, AR]
 
 EarthRay is a real-time multiplayer AR mobile app. Users point their phone in any direction; a ray projects from the rear camera through the Earth. Other connected users see that ray entering their AR space from the geometrically correct direction.
 
+<p class="cta-link"><a href="{{ '/projects/earthray/specification/' | relative_url }}">Read the full specification &rarr;</a></p>
+
+## Available on
+
+- App Store <span class="badge-soon">Coming soon</span>
+- Google Play <span class="badge-soon">Coming soon</span>
+
 ## How It Works
 
 GPS positions each user on a WGS84 ellipsoid model of the Earth. Device orientation — accelerometer, gyroscope, and magnetometer — determines the direction each phone is pointing. Rays are computed in ECEF (Earth-Centered, Earth-Fixed) coordinates and rendered in AR via Three.js. A self-hosted WebSocket relay server syncs positions and ray directions between all users in a session — in-memory only, no database, session data is auto-deleted on disconnect.
@@ -31,6 +38,7 @@ When a user in Amsterdam points their phone downward toward New York, the ray pa
 - Self-hosted WebSocket relay server (Node.js, in-memory rooms, anonymous JWT auth)
 - expo-sensors, expo-camera, expo-location
 
----
+## Legal
 
-[Full Specification](specification/) · [Privacy Policy](privacy-policy/) · [Terms and Conditions](terms/)
+- [Privacy Policy]({{ '/projects/earthray/privacy-policy/' | relative_url }})
+- [Terms and Conditions]({{ '/projects/earthray/terms/' | relative_url }})
