@@ -1,10 +1,9 @@
 ---
 title: Termojet
 description: Mobile companion app for HVAC and heating professionals — browse a catalog of manifolds, pumps, hydraulic separators and other boiler-room components, design installation schemes, validate connections, and export the result as a PDF.
+role: "Tech lead — full delivery, end to end: app, Firebase backend, release pipeline."
 tags: [React Native, Redux Toolkit, Firebase, i18n, iOS, Android]
 ---
-
-_Tech lead — full delivery, end to end: app, Firebase backend, release pipeline._
 
 Termojet is a mobile companion app for HVAC and heating professionals, built for [Termojet](https://termojet.com.ua/){:target="_blank" rel="noopener"} — a Ukrainian heating-equipment brand. It bundles a searchable catalog of boiler-room equipment — manifolds, pumps, hydraulic separators, valves and the rest of an HVAC installation — a visual scheme editor for laying out the system, connection validation that catches incompatible wiring before it leaves the office, and one-tap PDF export so installers can hand a clean spec sheet to clients on site.
 

@@ -15,6 +15,9 @@
         {% endfor %}
       </div>
       {% endif %}
+      {% if page.role %}
+      <p class="project-role">{{ page.role }}</p>
+      {% endif %}
       {% if page.link %}
       <p><a href="{{ page.link }}" class="project-link">View Project &rarr;</a></p>
       {% endif %}

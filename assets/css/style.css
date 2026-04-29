@@ -89,7 +89,7 @@ a:hover {
 /* Header */
 .site-header {
   border-bottom: 1px solid var(--color-border);
-  padding: 1rem 2rem;
+  padding: 1rem 0;
   backdrop-filter: blur(12px);
   background: rgba(10, 14, 26, 0.8);
   position: sticky;
@@ -100,6 +100,7 @@ a:hover {
 .site-header nav {
   max-width: var(--max-width);
   margin: 0 auto;
+  padding: 0 2rem;
   display: flex;
   align-items: center;
   gap: 1.5rem;
@@ -123,6 +124,10 @@ a:hover {
   padding: 3rem 2rem;
   flex: 1;
   width: 100%;
+}
+
+.site-header + .content {
+  padding-top: 1.5rem;
 }
 
 .content h1 {
@@ -214,6 +219,19 @@ a:hover {
   color: var(--color-muted);
   font-size: 0.95rem;
   margin-bottom: 0.5rem;
+}
+
+.project-role {
+  color: var(--color-muted);
+  opacity: 0.75;
+  font-size: 0.85rem;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.project-detail .project-role {
+  margin-top: -0.25rem;
+  margin-bottom: 1.25rem;
 }
 
 /* Tags */
@@ -345,7 +363,11 @@ tr:last-child td {
 /* Responsive */
 @media (max-width: 600px) {
   .site-header {
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 0;
+  }
+
+  .site-header nav {
+    padding: 0 1rem;
   }
 
   .content {
