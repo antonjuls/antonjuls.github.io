@@ -31,10 +31,10 @@ Termojet is a mobile companion app for HVAC and heating professionals, built for
 ## Screenshots
 
 <div class="screenshots">
-  <img src="{{ '/assets/images/termojet/1.jpg' | relative_url }}" alt="Termojet screenshot 1" loading="lazy" />
-  <img src="{{ '/assets/images/termojet/2.png' | relative_url }}" alt="Termojet screenshot 2" loading="lazy" />
-  <img src="{{ '/assets/images/termojet/3.png' | relative_url }}" alt="Termojet screenshot 3" loading="lazy" />
-  <img src="{{ '/assets/images/termojet/4.png' | relative_url }}" alt="Termojet screenshot 4" loading="lazy" />
+  <img src="{{ '/assets/images/termojet/1.jpeg' | relative_url }}" alt="Termojet screenshot 1" loading="lazy" />
+  <img src="{{ '/assets/images/termojet/2.jpeg' | relative_url }}" alt="Termojet screenshot 2" loading="lazy" />
+  <img src="{{ '/assets/images/termojet/3.jpeg' | relative_url }}" alt="Termojet screenshot 3" loading="lazy" />
+  <img src="{{ '/assets/images/termojet/4.jpeg' | relative_url }}" alt="Termojet screenshot 4" loading="lazy" />
 </div>
 
 ## Available on
