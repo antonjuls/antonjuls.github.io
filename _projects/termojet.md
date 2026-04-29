@@ -4,7 +4,7 @@ description: Mobile companion app for HVAC and heating professionals — browse 
 tags: [React Native, Redux Toolkit, Firebase, i18n, iOS, Android]
 ---
 
-Termojet is a mobile companion app for HVAC and heating professionals, built for [Termojet](https://termojet.com.ua/) — a Ukrainian heating-equipment brand. It bundles a searchable catalog of boiler-room equipment — manifolds, pumps, hydraulic separators, valves and the rest of an HVAC installation — a visual scheme editor for laying out the system, connection validation that catches incompatible wiring before it leaves the office, and one-tap PDF export so installers can hand a clean spec sheet to clients on site.
+Termojet is a mobile companion app for HVAC and heating professionals, built for [Termojet](https://termojet.com.ua/){:target="_blank" rel="noopener"} — a Ukrainian heating-equipment brand. It bundles a searchable catalog of boiler-room equipment — manifolds, pumps, hydraulic separators, valves and the rest of an HVAC installation — a visual scheme editor for laying out the system, connection validation that catches incompatible wiring before it leaves the office, and one-tap PDF export so installers can hand a clean spec sheet to clients on site.
 
 ## Highlights
 
@@ -31,13 +31,21 @@ Termojet is a mobile companion app for HVAC and heating professionals, built for
 ## Screenshots
 
 <div class="screenshots">
-  <img src="{{ '/assets/images/termojet/1.jpeg' | relative_url }}" alt="Termojet screenshot 1" loading="lazy" />
-  <img src="{{ '/assets/images/termojet/2.jpeg' | relative_url }}" alt="Termojet screenshot 2" loading="lazy" />
-  <img src="{{ '/assets/images/termojet/3.jpeg' | relative_url }}" alt="Termojet screenshot 3" loading="lazy" />
-  <img src="{{ '/assets/images/termojet/4.jpeg' | relative_url }}" alt="Termojet screenshot 4" loading="lazy" />
+  <a href="{{ '/assets/images/termojet/1.jpeg' | relative_url }}" target="_blank" rel="noopener">
+    <img src="{{ '/assets/images/termojet/1.jpeg' | relative_url }}" alt="Termojet screenshot 1" loading="lazy" />
+  </a>
+  <a href="{{ '/assets/images/termojet/2.jpeg' | relative_url }}" target="_blank" rel="noopener">
+    <img src="{{ '/assets/images/termojet/2.jpeg' | relative_url }}" alt="Termojet screenshot 2" loading="lazy" />
+  </a>
+  <a href="{{ '/assets/images/termojet/3.jpeg' | relative_url }}" target="_blank" rel="noopener">
+    <img src="{{ '/assets/images/termojet/3.jpeg' | relative_url }}" alt="Termojet screenshot 3" loading="lazy" />
+  </a>
+  <a href="{{ '/assets/images/termojet/4.jpeg' | relative_url }}" target="_blank" rel="noopener">
+    <img src="{{ '/assets/images/termojet/4.jpeg' | relative_url }}" alt="Termojet screenshot 4" loading="lazy" />
+  </a>
 </div>
 
 ## Available on
 
-- [App Store](https://apps.apple.com/us/app/termojet/id1569103051)
-- [Google Play](https://play.google.com/store/apps/details?id=com.termojet&hl=en)
+- [App Store](https://apps.apple.com/us/app/termojet/id1569103051){:target="_blank" rel="noopener"}
+- [Google Play](https://play.google.com/store/apps/details?id=com.termojet&hl=en){:target="_blank" rel="noopener"}

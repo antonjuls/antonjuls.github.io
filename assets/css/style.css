@@ -251,9 +251,26 @@ a:hover {
 /* Screenshots gallery */
 .screenshots {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
   margin: 1rem 0 1.5rem;
+}
+
+.screenshots a {
+  display: block;
+  line-height: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.screenshots a:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: 0 0 16px var(--color-accent-glow);
+  transform: translateY(-2px);
+  text-decoration: none;
 }
 
 .screenshots img {
@@ -261,9 +278,6 @@ a:hover {
   max-width: 100%;
   min-width: 0;
   height: auto;
-  border-radius: 12px;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
   display: block;
   object-fit: contain;
 }
