@@ -200,6 +200,12 @@ If `elevation < 0`, the ray points below A's horizon — through the Earth.
 - **iOS** (CMAttitude, NWU convention): `α = α_raw + π/2`
 - **Android** (W3C, already ENU): `α = α_raw`
 
+Both platforms measure yaw from _magnetic_ north, while ENU, ECEF and the Sun and Moon positions use _true_ north. The difference is the local magnetic declination `D` (east positive): about +3° in Amsterdam, +12° in Moscow, +15° in Seattle. Left uncorrected, 3° moves the exit point of an 8,000 km ray by ~400 km. The app computes `D` on the device from the World Magnetic Model (WMM2025) at every GPS fix and rotates the yaw:
+
+```
+α_true = α − D
+```
+
 The rear-camera forward vector (`R · [0, 0, −1]`) in ENU:
 
 ```
