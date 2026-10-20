@@ -5,7 +5,7 @@ title: EarthRay — Privacy Policy
 
 # EarthRay — Privacy Policy
 
-**Effective date:** April 29, 2026
+**Effective date:** October 20, 2026
 
 ## Who We Are
 
@@ -37,7 +37,6 @@ No analytics. No crash reporting. No advertising or tracking SDKs. No IDFA. No c
 ## Third-Party Services
 
 - **Cloud hosting provider** — used to host the EarthRay relay server, which synchronizes session state between participants in real time. The relay holds session data only in memory; it has no database, does not log user state, and does not retain anything after disconnect. Depending on the deployment region, session data may be processed in countries outside the European Economic Area. Where this is the case, transfers are protected by the EU–US Data Privacy Framework and the European Commission's Standard Contractual Clauses (SCCs).
-- **Expo Updates (EAS)** — used for over-the-air app updates. No personal data is transmitted to Expo.
 
 ## Data Sharing
 

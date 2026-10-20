@@ -72,7 +72,7 @@ The same loop, on every connected phone, every 200 ms. No phone is the source of
 ### Stack
 
 ```
-React Native + Expo (managed workflow)
+React Native + Expo SDK (bare workflow)
 ├── expo-location              GPS → latitude / longitude / altitude
 ├── expo-sensors               DeviceMotion → Euler angles
 ├── expo-camera                live camera feed (AR background)
