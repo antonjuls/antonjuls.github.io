@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "jekyll",
+      "runtimeExecutable": "/bin/sh",
+      "runtimeArgs": [
+        "-c",
+        "PATH=/opt/homebrew/opt/ruby@3.4/bin:$PATH BUNDLE_VERSION=system BUNDLE_PATH=vendor/bundle exec bundle exec jekyll serve --port 4000 --livereload"
+      ],
+      "port": 4000
+    }
+  ]
+}
