@@ -27,7 +27,6 @@ When a user in Amsterdam points their phone downward toward New York, the ray pa
 - **3D globe view** showing all connected users and their rays in real time
 - **AR camera view** with rays rendered in physically correct directions
 - **Multiplayer via room codes** — no accounts needed, join instantly
-- **Eratosthenes readout** — measures Earth's circumference using the angle between two users' surface normals (the same method Eratosthenes used in 240 BC, now with smartphones)
 - **Sun and Moon** rendered at astronomically correct positions on the globe
 
 ## Tech Stack

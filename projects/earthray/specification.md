@@ -11,7 +11,7 @@ EarthRay is two things in one.
 
 **A social toy.** Connect with someone anywhere on the planet, see them as a coloured sphere in your AR camera, and watch their ray sweep through space as they move their phone. _"They're pointing somewhere — and I can see it move, right now"_ makes a person on the other side of the world feel physically present in your room.
 
-**A science experiment.** The same setup, between two distant users, lets you re-derive Earth's circumference with nothing but two phones — the same measurement Eratosthenes made in 240 BC, now live. To point at a friend in New York from Amsterdam, you have to tilt your phone _down_: the planet is between you. The farther apart you stand, the steeper the tilt. That angle is the curvature of the Earth, made physically obvious.
+**A geometry you can hold.** To point at a friend in New York from Amsterdam, you have to tilt your phone _down_: the planet is between you. The farther apart you stand, the steeper the tilt. The app shows the geometry and lets you draw your own conclusions.
 
 Both layers are simultaneously true. The math underneath is real — WGS84, ECEF, sensor fusion — but the experience is _"there's my friend, and I can almost feel them through this glass."_
 
@@ -38,18 +38,6 @@ The same camera view, with every other connected user appearing as a coloured sp
 ### Sun and Moon
 
 The Sun and Moon are also rendered on the globe and in the AR scene, at astronomically correct positions for the current time. A small grace note: when you point upward at the actual sun in the sky, the in-app sun is right there.
-
----
-
-## The Eratosthenes Experiment
-
-When two users connect, the app displays the angle between their _surface normals_ — the vectors pointing straight up out of the ground at each location. Combined with the great-circle distance between them (Haversine), this gives the circumference of the Earth:
-
-```
-circumference = (distance_AB / angle_between_normals) × 360°
-```
-
-This is the same calculation Eratosthenes performed in 240 BC, when he compared the shadow of a stick in Alexandria to the shadow at Syene 800 km south and computed Earth's circumference to within a few percent. With two smartphones, modern GPS, and the same formula, you get ~40,075 km — the modern accepted value. The Earth is round; you can prove it from your sofa.
 
 ---
 
@@ -246,16 +234,12 @@ t_exit = (−b + √(b² − 4c)) / 2
 P_exit = P_origin + t_exit · d̂
 ```
 
-### Eratosthenes (Earth's circumference from two phones)
-
-Already given in _The Eratosthenes Experiment_ above. For reference:
+### Angle and Distance Between Two Users
 
 ```
 θ           = acos(dot(n_A, n_B))                          angle between surface normals
 distance_AB = 2·R·atan2(√a, √(1−a))                        haversine
    where a  = sin²(Δφ/2) + cos(φ_A)·cos(φ_B)·sin²(Δλ/2)
-
-circumference = (distance_AB / θ) × 360°                   expected: ~40,075 km
 ```
 
 ---
