@@ -5,7 +5,7 @@ title: EarthRay — Terms and Conditions
 
 # EarthRay — Terms and Conditions
 
-**Effective date:** October 20, 2026
+**Effective date:** October 22, 2026
 
 ## 1. Who We Are
 
@@ -69,6 +69,7 @@ The developer may, at any time and without prior notice:
 
 - Suspend, restrict, or discontinue the relay server, the app, or any feature.
 - Change the limits on connections per IP, users per room, or message rate.
+- Turn features on or off remotely, for all users or for a share of installs at a time, without an app update.
 - Release maintenance updates, including breaking ones, via the App Store or Google Play.
 
 ## 10. Sensor and Geometry Disclaimer

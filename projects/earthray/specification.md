@@ -83,10 +83,13 @@ React Native + Expo SDK (bare workflow)
 ├── react-native-reanimated    gesture animation
 ├── react-native-gesture-handler  pan/pinch gestures
 ├── burnt                      toast notifications
+├── @sentry/react-native       crash and error reports (EU region, scrubbed)
+├── @aptabase/react-native     anonymous usage statistics (EU region, opt-out)
 └── TypeScript                 throughout
 
 Self-hosted relay server: Node.js + ws, in-memory only,
 anonymous JWT auth, no database, no persistence.
+Feature flags: own, served in the relay's remote config.
 ```
 
 ### Why Sensor-Based AR (Not ARKit / ARCore)
@@ -143,6 +146,14 @@ interface UserState {
 ```
 
 Each publish frame is roughly 120 bytes. At 5 Hz, a 5-person room produces ~0.6 KB/s upstream and ~2.4 KB/s downstream per user.
+
+### Remote Config and Feature Flags
+
+The relay serves a small JSON config (`GET /config`, and a `config` frame on connect): maintenance mode, minimum app version and feature flags. A flag can be switched on for everyone, from a minimum app version, or for a percentage of installs. The percentage is decided on the device by hashing a random install ID that never leaves the phone, so the server never learns which bucket an install falls into.
+
+### Diagnostics
+
+Crashes and unexpected errors go to Sentry (EU region). Before a report leaves the device, coordinates, ray data, room codes and display names are stripped; no IP addresses, session replay or performance traces. Anonymous usage events (app opened, room joined, tab viewed) go to Aptabase (EU region) with fixed values only and no persistent identifier, and can be turned off in Settings. No Google or Firebase services, no advertising IDs.
 
 ---
 
