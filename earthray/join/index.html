@@ -1,0 +1,113 @@
+---
+layout: default
+title: Join an EarthRay room
+description: You're invited to an EarthRay room. Open it in the app, or install EarthRay and type the room code.
+permalink: /earthray/join/
+---
+{% comment %}
+  Landing page for EarthRay invite links.
+
+  Links look like https://antonjuls.github.io/earthray/join/<CODE>. With the app installed, iOS
+  Universal Links and Android App Links open the app before this page loads (see
+  /.well-known/apple-app-site-association and /.well-known/assetlinks.json). Without the app,
+  GitHub Pages has no server-side routing, so /earthray/join/<CODE> is served by /404.html, which
+  redirects here as /earthray/join/?code=<CODE>. The app shares the path form and accepts both.
+
+  Store IDs are placeholders until the store listings exist: replace [APP_STORE_ID].
+{% endcomment %}
+<style>
+  .join { text-align: center; padding-top: 1rem; }
+  .join h1 { margin-bottom: 0.5rem; }
+  .join .lead { color: var(--color-muted); }
+  .join-code {
+    display: inline-block;
+    margin: 1.5rem 0 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 2.2rem;
+    letter-spacing: 0.35em;
+    color: var(--color-text-bright);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-hover);
+    border-radius: 14px;
+  }
+  .join-code-hint { color: var(--color-muted); font-size: 0.9rem; }
+  .join-actions { display: flex; flex-direction: column; gap: 0.75rem; max-width: 320px; margin: 2rem auto 0; }
+  .join-btn {
+    display: block;
+    padding: 0.8rem 1.25rem;
+    border-radius: 12px;
+    font-weight: 600;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text-bright);
+  }
+  .join-btn:hover { background: var(--color-surface-hover); text-decoration: none; }
+  .join-btn.primary { background: var(--color-accent); border-color: var(--color-accent); color: var(--color-bg-deeper); }
+  .join-btn.primary:hover { background: var(--color-accent-hover); }
+  .join-steps { text-align: left; max-width: 420px; margin: 2.5rem auto 0; }
+  .join [hidden] { display: none; }
+</style>
+
+<div class="join">
+  <h1>Join an EarthRay room</h1>
+  <p class="lead" id="join-lead">Someone invited you to point at them through the planet.</p>
+
+  <div id="join-code-block" hidden>
+    <div class="join-code" id="join-code" aria-label="Room code"></div>
+    <p class="join-code-hint">Room code. Type it in EarthRay after installing.</p>
+  </div>
+  <p id="join-no-code" hidden>This invite link has no valid room code. Ask for a new link, or type the code in EarthRay.</p>
+
+  <div class="join-actions">
+    <a class="join-btn primary" id="join-open" href="earthray://" hidden>Open in EarthRay</a>
+    <a class="join-btn" id="join-ios" href="https://apps.apple.com/app/id[APP_STORE_ID]">Download on the App Store</a>
+    <a class="join-btn" id="join-android" href="https://play.google.com/store/apps/details?id=com.antonjuls.earthray">Get it on Google Play</a>
+  </div>
+
+  <ol class="join-steps">
+    <li>Install EarthRay.</li>
+    <li>Open it and tap Join.</li>
+    <li>Type the room code above.</li>
+  </ol>
+
+  <p class="cta-link"><a href="{{ '/projects/earthray/' | relative_url }}">About EarthRay</a></p>
+</div>
+
+<script>
+  (function () {
+    // Same rules as the app: 6 characters, no 0/O, 1/I/L.
+    var CODE = /^[ABCDEFGHJKMNPQRSTUVWXYZ23456789]{6}$/;
+    var raw = new URLSearchParams(window.location.search).get('code') || '';
+    var match = window.location.pathname.match(/\/earthray\/join\/([^/?#]+)\/?$/);
+    if (!raw && match) raw = decodeURIComponent(match[1]);
+    var code = raw.trim().toUpperCase();
+    var valid = CODE.test(code);
+
+    var ua = navigator.userAgent || '';
+    var isAndroid = /Android/i.test(ua);
+    var isIOS = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+
+    if (valid) {
+      document.getElementById('join-code').textContent = code;
+      document.getElementById('join-code-block').hidden = false;
+      var open = document.getElementById('join-open');
+      open.href = 'earthray://join/' + code;
+      open.hidden = !(isIOS || isAndroid);
+    } else if (raw) {
+      document.getElementById('join-no-code').hidden = false;
+    }
+
+    // Show only the matching store on a phone; both on a desktop.
+    if (isIOS) document.getElementById('join-android').hidden = true;
+    if (isAndroid) document.getElementById('join-ios').hidden = true;
+
+    // With the app installed the https link normally opens it directly. If it landed here anyway
+    // (in-app browsers, or a redirect from 404.html, which iOS does not hand to the app), try the
+    // custom scheme once. Android only: iOS Safari shows an "invalid address" alert when the app is
+    // missing, so iOS gets the "Open in EarthRay" button instead.
+    if (valid && isAndroid) {
+      window.location.href = 'earthray://join/' + code;
+    }
+  })();
+</script>

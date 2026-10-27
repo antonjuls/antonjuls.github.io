@@ -1,0 +1,19 @@
+---
+layout: default
+title: Page not found
+permalink: /404.html
+---
+{% comment %}
+  GitHub Pages has no server-side routing: every unknown path is served by this page.
+  EarthRay invite links (/earthray/join/<CODE>) land here when the app is not installed,
+  so they are forwarded to the invite landing page as /earthray/join/?code=<CODE>.
+{% endcomment %}
+<script>
+  (function () {
+    var m = window.location.pathname.match(/^\/earthray\/join\/([^/?#]+)\/?$/i);
+    if (m) window.location.replace('/earthray/join/?code=' + encodeURIComponent(m[1]));
+  })();
+</script>
+
+<h1>Page not found</h1>
+<p>This page doesn't exist. <a href="{{ '/' | relative_url }}">Back to the home page</a>.</p>

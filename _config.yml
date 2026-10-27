@@ -7,6 +7,11 @@ og_image: /assets/images/avatar.png
 markdown: kramdown
 permalink: pretty
 
+# Dot folders are skipped by default. .well-known holds the EarthRay app-link files
+# (apple-app-site-association, assetlinks.json), served as plain static files.
+include:
+  - .well-known
+
 collections:
   projects:
     output: true

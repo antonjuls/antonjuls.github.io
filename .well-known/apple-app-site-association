@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["85V5B8BAJJ.com.antonjuls.earthray"],
+        "components": [
+          {
+            "/": "/earthray/join/*",
+            "comment": "EarthRay room invites"
+          }
+        ]
+      }
+    ]
+  }
+}
